@@ -3,13 +3,14 @@ let roomDimensions = [],
     hooverPosition = [],
     dirtPatchPositions = [],
     directions = [],
-    foundDirtPatches = []
+    foundDirtPatches = [];
 
 // Check if hoover position is a dirt patch
 const isDirtPatch = (hooverPosition, dirtPatchPositions) => {
     return dirtPatchPositions.find((position) => JSON.stringify(position) === JSON.stringify(hooverPosition));
 }
 
+// Read input file and traverse the room
 const readInputAndTraverseRoom = () => {
     // Read input.txt file by line
     let inputFileLines = fs.readFileSync('input.txt').toString().split("\n");
@@ -56,6 +57,8 @@ const readInputAndTraverseRoom = () => {
                 }
                 break;
         }
+
+        // Check if hoover position is a dirt patch
         if(isDirtPatch(hooverPosition, dirtPatchPositions)) {
             foundDirtPatches.push(hooverPosition);
         }
